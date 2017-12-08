@@ -1,0 +1,28 @@
+<div class="col-xl-6 col-md-6 col-xs-12">
+  <div class="card">
+    <div class="card-header"><h4 class="card-title">Servers</h4></div>
+    <div class="card-body collapse in">
+      <div class="card-block">
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <td>Server</td>
+                <td>Address</td>
+                <td>RAM</td>
+                <td></td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+              *ngFor="let server of servers"
+              app-server-item
+              [server]="server"
+              ></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

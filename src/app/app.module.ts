@@ -8,6 +8,10 @@ import { ServersComponent } from './body-container/servers/servers.component';
 import { DashboardComponent } from './body-container/dashboard/dashboard.component';
 import { HeaderComponent } from './header/header.component';
 import { BodyContainerComponent } from './body-container/body-container.component';
+import {Http, HttpModule} from '@angular/http';
+import { ServerListComponent } from './body-container/servers/server-list/server-list.component';
+import { ServerItemComponent } from './body-container/servers/server-list/server-item/server-item.component';
+import { EditServerComponent } from './body-container/servers/edit-server/edit-server.component';
 
 const appRoutes: Routes = [
   {path: 'servers', component: ServersComponent},
@@ -22,10 +26,14 @@ const appRoutes: Routes = [
     ServersComponent,
     DashboardComponent,
     HeaderComponent,
-    BodyContainerComponent
+    BodyContainerComponent,
+    ServerListComponent,
+    ServerItemComponent,
+    EditServerComponent
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     RouterModule,
     RouterModule.forRoot(appRoutes)
   ],
