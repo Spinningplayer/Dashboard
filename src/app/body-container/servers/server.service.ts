@@ -33,6 +33,7 @@ export class ServerService {
   }
 
   public addServer(server: Server): Promise<Server> {
+    console.log('create server: ' + server);
     return this.http.post(
         this.serverUrl,
         JSON.stringify(server),

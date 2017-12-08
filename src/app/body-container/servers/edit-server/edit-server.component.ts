@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Server} from '../../../models/server.model';
 import {ServerService} from '../server.service';
 
@@ -16,24 +16,33 @@ export class EditServerComponent implements OnInit {
   constructor(private serverService: ServerService) { }
 
   ngOnInit() {
+    this.initForm();
     this.serverService.serverSelected.subscribe(server => {
-      this.server = server
+      this.server = server;
       console.log('new server: ' + server.name);
+      this.editMode = true;
+      this.initForm();
     });
   }
 
   save() {
-    if(this.editMode) {
-      this.serverService.updateServer(this.server, this.server.id)
+    if (this.editMode) {
+      this.serverService.updateServer(this.serverForm.value, this.server.id)
         .then(response => {
-          console.log('server updated');
+          console.log(response);
+          this.editMode = false;
         }).catch(err => console.log(err));
     } else {
-      this.serverService.addServer(this.server)
+      this.serverService.addServer(this.serverForm.value)
         .then(response => {
           console.log('server created');
         }).catch(err => console.log(err));
     }
+    this.serverForm.patchValue({
+      'name': null,
+      'address': null,
+      'ram': null,
+    });
   }
 
   cancel() {
@@ -43,15 +52,18 @@ export class EditServerComponent implements OnInit {
   private initForm() {
     let serverName = '';
     let serverAddress = '';
-    let serverRam = '';
+    let serverRam;
 
-    if(this.editMode) {
-
+    if (this.editMode) {
+      serverName = this.server.name;
+      serverAddress = this.server.address;
+      serverRam = this.server.ram;
     }
+
+    this.serverForm = new FormGroup({
+      'name': new FormControl(serverName, Validators.required),
+      'address': new FormControl(serverAddress, Validators.required),
+      'ram': new FormControl(serverRam, Validators.required),
+    });
   }
-
-  this.serverForm = new FormGroup({
-
-  })
-
 }

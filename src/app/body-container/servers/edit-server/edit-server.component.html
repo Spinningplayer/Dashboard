@@ -3,7 +3,7 @@
     <div class="card-header"><h4 class="card-title">Edit Server</h4></div>
     <div class="card-body collapse in">
       <div class="card-block">
-        <form  (ngSubmit)="save()">
+        <form [formGroup]="serverForm" (ngSubmit)="save()">
           <div class="row">
             <div class="col-xs-12">
               <label for="name">Name</label>
@@ -25,7 +25,8 @@
           <br>
           <div class="row">
             <div class="col-xs-12">
-              <button class="btn btn-success" [disabled]="!recipeForm.valid">Save</button>
+              <button *ngIf="editMode" class="btn btn-success" [disabled]="!serverForm.valid">Update</button>
+              <button *ngIf="!editMode" class="btn btn-success" [disabled]="!serverForm.valid">Create</button>
               <button class="btn btn-danger" (click)="cancel()">Cancel</button>
             </div>
           </div>

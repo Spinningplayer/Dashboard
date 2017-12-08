@@ -17,6 +17,10 @@ export class ServerListComponent implements OnInit {
     this.serverService.getServers()
       .then(servers => this.servers = servers)
       .catch(error => console.log(error));
+
+    this.serverService.serversChanged.subscribe(servers => {
+      this.servers = servers;
+    })
   }
 
 }

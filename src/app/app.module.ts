@@ -12,6 +12,8 @@ import {Http, HttpModule} from '@angular/http';
 import { ServerListComponent } from './body-container/servers/server-list/server-list.component';
 import { ServerItemComponent } from './body-container/servers/server-list/server-item/server-item.component';
 import { EditServerComponent } from './body-container/servers/edit-server/edit-server.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {CommonModule} from '@angular/common';
 
 const appRoutes: Routes = [
   {path: 'servers', component: ServersComponent},
@@ -35,7 +37,10 @@ const appRoutes: Routes = [
     BrowserModule,
     HttpModule,
     RouterModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    FormsModule,
+    ReactiveFormsModule,
+    CommonModule
   ],
   exports: [RouterModule],
   providers: [],
