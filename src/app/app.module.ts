@@ -14,10 +14,18 @@ import { ServerItemComponent } from './body-container/servers/server-list/server
 import { EditServerComponent } from './body-container/servers/edit-server/edit-server.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CommonModule} from '@angular/common';
+import {LedstripsComponent} from './body-container/ledstrips/ledstrips.component';
+import {ControllerFormComponent} from './body-container/ledstrips/controller-form/controller-form.component';
+import {LedstripFormComponent} from './body-container/ledstrips/ledstrip-form/ledstrip-form.component';
+import {ControllerListComponent} from './body-container/ledstrips/controller-list/controller-list.component';
+import {LedstripListComponent} from './body-container/ledstrips/ledstrip-list/ledstrip-list.component';
+import {ControllerItemComponent} from './body-container/ledstrips/controller-list/controller-item/controller-item.component';
+import {LedstripItemComponent} from './body-container/ledstrips/ledstrip-list/ledstrip-item/ledstrip-item.component';
 
 const appRoutes: Routes = [
   {path: 'servers', component: ServersComponent},
   {path: 'dashboard', component: DashboardComponent},
+  {path: 'ledstrips', component: LedstripsComponent},
   {path: '', component: DashboardComponent}
 ]
 
@@ -31,7 +39,14 @@ const appRoutes: Routes = [
     BodyContainerComponent,
     ServerListComponent,
     ServerItemComponent,
-    EditServerComponent
+    EditServerComponent,
+    LedstripsComponent,
+    ControllerFormComponent,
+    LedstripFormComponent,
+    ControllerListComponent,
+    LedstripListComponent,
+    ControllerItemComponent,
+    LedstripItemComponent
   ],
   imports: [
     BrowserModule,
