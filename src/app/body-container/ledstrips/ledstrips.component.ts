@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import {LedstripsService} from './controller.service';
+import {ControllerService} from './controller.service';
+import {LedstripService} from './ledstrip.service';
 
 @Component({
   selector: 'app-ledstrips',
   templateUrl: './ledstrips.component.html',
   styleUrls: ['./ledstrips.component.css'],
-  providers: [LedstripsService]
+  providers: [ControllerService, LedstripService]
 })
 export class LedstripsComponent implements OnInit {
 

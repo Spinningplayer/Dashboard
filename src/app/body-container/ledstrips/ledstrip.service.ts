@@ -29,9 +29,9 @@ export class LedstripService {
       });
   }
 
-  public addLedstrip(ledstrip: Ledstrip): Promise<Ledstrip> {
+  public addLedstrip(ledstrip: Ledstrip, id: string): Promise<Ledstrip> {
     return this.http.post(
-      this.serverUrlLedstrips,
+      this.serverUrlLedstrips + id,
       JSON.stringify(ledstrip),
       {headers: this.headers}
     ).toPromise()
@@ -61,7 +61,7 @@ export class LedstripService {
       });
   }
 
-  public updateLedstrip(id: number, ledstrip: Ledstrip): Promise<number> {
+  public updateLedstrip(id: string, ledstrip: Ledstrip): Promise<number> {
     return this.http.put(
       this.serverUrlLedstrips + id,
       {headers: this.headers}

@@ -1,3 +1,29 @@
-<p>
-  controller-list works!
-</p>
+<div class="col-xl-12 col-md-12 col-xs-12">
+  <div class="card">
+    <div class="card-header"><h4 class="card-title">Ledstrip Controllers</h4></div>
+    <div class="card-body collapse in">
+      <div class="card-block">
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+            <tr>
+              <td>Name</td>
+              <td>Address</td>
+              <td></td>
+              <td></td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr
+              *ngFor="let c of controllers"
+              app-controller-item
+              [controller]="c"
+              (click)="select(c)"
+            ></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

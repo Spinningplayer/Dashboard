@@ -7,7 +7,7 @@ import {Ledstrip} from '../../models/ledstrip.model';
 import {Subject} from 'rxjs/Subject';
 
 @Injectable()
-export class LedstripsService {
+export class ControllerService {
   public controllersChanged = new Subject<Controller[]>();
   public controllersSelected = new Subject<Controller>();
 
@@ -51,7 +51,7 @@ export class LedstripsService {
       });
   }
 
-  public deleteController(id: number): Promise<number> {
+  public deleteController(id: string): Promise<number> {
     return this.http.delete(
       this.serverUrlControllers + id,
       {headers: this.headers}
@@ -61,14 +61,14 @@ export class LedstripsService {
           this.controllers = controllers;
           this.controllersChanged.next(this.controllers.slice());
         });
-        return response.json() as number;
+        return response.json() as string;
       })
       .catch(error => {
         return this.handleError(error);
       });
   }
 
-  public updateController(controller: Controller, id: number): Promise<Controller> {
+  public updateController(controller: Controller, id: string): Promise<Controller> {
     return this.http.put(
       this.serverUrlControllers + id,
       JSON.stringify(controller),
