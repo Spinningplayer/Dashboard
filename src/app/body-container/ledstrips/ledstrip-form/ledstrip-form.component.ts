@@ -39,12 +39,14 @@ export class LedstripFormComponent implements OnInit {
     if (this.editMode) {
       this.stripService.updateLedstrip( this.ledstrip._id, this.ledstripForm.value)
         .then(response => {
+          console.log('ledstrip updated');
           this.editMode = false;
         });
     } else {
       if (this.cSelected) {
         this.stripService.addLedstrip(this.ledstripForm.value, this.controller._id)
           .then(response => {
+            console.log(';edstrip created');
           });
       }
     }

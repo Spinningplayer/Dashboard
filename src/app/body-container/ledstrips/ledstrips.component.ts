@@ -6,7 +6,6 @@ import {LedstripService} from './ledstrip.service';
   selector: 'app-ledstrips',
   templateUrl: './ledstrips.component.html',
   styleUrls: ['./ledstrips.component.css'],
-  providers: [ControllerService, LedstripService]
 })
 export class LedstripsComponent implements OnInit {
 

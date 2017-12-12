@@ -21,6 +21,8 @@ import {ControllerListComponent} from './body-container/ledstrips/controller-lis
 import {LedstripListComponent} from './body-container/ledstrips/ledstrip-list/ledstrip-list.component';
 import {ControllerItemComponent} from './body-container/ledstrips/controller-list/controller-item/controller-item.component';
 import {LedstripItemComponent} from './body-container/ledstrips/ledstrip-list/ledstrip-item/ledstrip-item.component';
+import {ControllerService} from './body-container/ledstrips/controller.service';
+import {LedstripService} from './body-container/ledstrips/ledstrip.service';
 
 const appRoutes: Routes = [
   {path: 'servers', component: ServersComponent},
