@@ -49,7 +49,7 @@ export class EditServerComponent implements OnInit {
     this.serverForm.patchValue({
       'name': null,
       'address': null,
-      'ram': null,
+      'ram': null
     });
   }
 
