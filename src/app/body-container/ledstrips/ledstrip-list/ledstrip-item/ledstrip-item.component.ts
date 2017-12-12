@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Ledstrip} from '../../../../models/ledstrip.model';
+import {LedstripService} from '../../ledstrip.service';
 
 @Component({
   selector: '[app-ledstrip-item]',
@@ -8,9 +9,22 @@ import {Ledstrip} from '../../../../models/ledstrip.model';
 })
 export class LedstripItemComponent implements OnInit {
   @Input() strip: Ledstrip;
-  constructor() { }
+  constructor(private service: LedstripService) { }
 
   ngOnInit() {
+
+  }
+
+  edit() {
+    this.service.selectLedstrip(this.strip);
+  }
+
+  delete() {
+    this.service.deleteLedstrip(this.strip._id).then(
+      response => {
+        console.log('ledstrip deleted ' + response);
+      }
+    );
   }
 
 }

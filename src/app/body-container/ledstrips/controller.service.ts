@@ -2,8 +2,6 @@ import { Injectable } from '@angular/core';
 import {env} from '../../environments/env';
 import {Http, Headers} from '@angular/http';
 import {Controller} from '../../models/Controller.model';
-import {toPromise} from 'rxjs/operator/toPromise';
-import {Ledstrip} from '../../models/ledstrip.model';
 import {Subject} from 'rxjs/Subject';
 
 @Injectable()

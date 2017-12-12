@@ -60,7 +60,7 @@ const appRoutes: Routes = [
     CommonModule
   ],
   exports: [RouterModule],
-  providers: [],
+  providers: [ControllerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

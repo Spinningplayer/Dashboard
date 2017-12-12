@@ -16,8 +16,8 @@
             <tbody>
             <tr
               *ngFor="let s of ledstrips"
-              app-controller-item
-              [controller]="s"
+              app-ledstrip-item
+              [strip]="s"
             ></tr>
             </tbody>
           </table>
