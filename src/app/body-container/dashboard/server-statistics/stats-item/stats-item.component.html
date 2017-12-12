@@ -1,0 +1,7 @@
+<h5>{{server.name}}</h5>
+CPU Load: {{stat.cpuLoad}}%
+<progress class="progress" value="{{stat.cpuLoad}}" max="100" aria-describedby="CPU Load" *ngIf="connection"></progress>
+<progress class="progress progress-danger" value="" max="" aria-describedby="CPU Load" *ngIf="!connection"></progress>
+RAM Usage: {{stat.ramUsage}}/{{server.ram}} MB
+<progress class="progress" value="{{stat.ramUsage}}" max="{{server.ram}}" aria-describedby="RAM Usage" *ngIf="connection"></progress>
+<progress class="progress progress-danger" value="" max="" aria-describedby="RAM Usage" *ngIf="!connection"></progress>

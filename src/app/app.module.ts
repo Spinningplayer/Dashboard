@@ -23,6 +23,9 @@ import {ControllerItemComponent} from './body-container/ledstrips/controller-lis
 import {LedstripItemComponent} from './body-container/ledstrips/ledstrip-list/ledstrip-item/ledstrip-item.component';
 import {ControllerService} from './body-container/ledstrips/controller.service';
 import {LedstripService} from './body-container/ledstrips/ledstrip.service';
+import { ServerStatisticsComponent } from './body-container/dashboard/server-statistics/server-statistics.component';
+import {ServerService} from './body-container/servers/server.service';
+import { StatsItemComponent } from './body-container/dashboard/server-statistics/stats-item/stats-item.component';
 
 const appRoutes: Routes = [
   {path: 'servers', component: ServersComponent},
@@ -48,7 +51,9 @@ const appRoutes: Routes = [
     ControllerListComponent,
     LedstripListComponent,
     ControllerItemComponent,
-    LedstripItemComponent
+    LedstripItemComponent,
+    ServerStatisticsComponent,
+    StatsItemComponent
   ],
   imports: [
     BrowserModule,
@@ -60,7 +65,7 @@ const appRoutes: Routes = [
     CommonModule
   ],
   exports: [RouterModule],
-  providers: [ControllerService],
+  providers: [ControllerService, ServerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

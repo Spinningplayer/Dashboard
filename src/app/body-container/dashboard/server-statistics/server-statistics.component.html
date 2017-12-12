@@ -1,0 +1,15 @@
+<div class="col-xl-6 col-md-6 col-xs-12">
+  <div class="card">
+    <div class="card-header"><h4 class="card-title">Server Statistics</h4></div>
+    <div class="card-body collapse in">
+      <div class="card-block">
+        <div class="table-responsive">
+          <app-stats-item
+          *ngFor="let server of servers"
+          [server]="server"
+          ></app-stats-item>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

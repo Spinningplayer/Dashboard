@@ -5,7 +5,7 @@ import {ServerService} from './server.service';
   selector: 'app-servers',
   templateUrl: './servers.component.html',
   styleUrls: ['./servers.component.css'],
-  providers: [ServerService]
+  providers: []
 })
 export class ServersComponent implements OnInit {
 
