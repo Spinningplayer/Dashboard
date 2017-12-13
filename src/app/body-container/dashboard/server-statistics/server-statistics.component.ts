@@ -8,7 +8,7 @@ import {Server} from '../../../models/server.model';
   styleUrls: ['./server-statistics.component.css']
 })
 export class ServerStatisticsComponent implements OnInit {
-  private servers: Server[] = [];
+  servers: Server[] = [];
 
   constructor(private serverService: ServerService) { }
 
