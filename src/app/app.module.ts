@@ -26,6 +26,7 @@ import {LedstripService} from './body-container/ledstrips/ledstrip.service';
 import { ServerStatisticsComponent } from './body-container/dashboard/server-statistics/server-statistics.component';
 import {ServerService} from './body-container/servers/server.service';
 import { StatsItemComponent } from './body-container/dashboard/server-statistics/stats-item/stats-item.component';
+import { MenuDirective } from './menu.directive';
 
 const appRoutes: Routes = [
   {path: 'servers', component: ServersComponent},
@@ -53,7 +54,8 @@ const appRoutes: Routes = [
     ControllerItemComponent,
     LedstripItemComponent,
     ServerStatisticsComponent,
-    StatsItemComponent
+    StatsItemComponent,
+    MenuDirective
   ],
   imports: [
     BrowserModule,
