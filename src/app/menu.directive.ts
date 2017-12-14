@@ -15,6 +15,7 @@ export class MenuDirective {
     } else {
       this.document.body.classList.remove('menu-open');
       this.document.body.classList.remove('vertical-overlay-menu');
+      this.document.body.classList.add('vertical-menu');
       this.toggled = !this.toggled;
     }
   }
