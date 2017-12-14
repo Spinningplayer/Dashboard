@@ -22,11 +22,11 @@ import {LedstripListComponent} from './body-container/ledstrips/ledstrip-list/le
 import {ControllerItemComponent} from './body-container/ledstrips/controller-list/controller-item/controller-item.component';
 import {LedstripItemComponent} from './body-container/ledstrips/ledstrip-list/ledstrip-item/ledstrip-item.component';
 import {ControllerService} from './body-container/ledstrips/controller.service';
-import {LedstripService} from './body-container/ledstrips/ledstrip.service';
 import { ServerStatisticsComponent } from './body-container/dashboard/server-statistics/server-statistics.component';
 import {ServerService} from './body-container/servers/server.service';
 import { StatsItemComponent } from './body-container/dashboard/server-statistics/stats-item/stats-item.component';
 import { MenuDirective } from './menu.directive';
+import { LedstripControllerComponent } from './body-container/dashboard/ledstrip-controller/ledstrip-controller.component';
 
 const appRoutes: Routes = [
   {path: 'servers', component: ServersComponent},
@@ -55,7 +55,8 @@ const appRoutes: Routes = [
     LedstripItemComponent,
     ServerStatisticsComponent,
     StatsItemComponent,
-    MenuDirective
+    MenuDirective,
+    LedstripControllerComponent
   ],
   imports: [
     BrowserModule,

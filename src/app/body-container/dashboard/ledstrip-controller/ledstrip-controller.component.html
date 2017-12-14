@@ -1,0 +1,58 @@
+<div class="col-xl-6 col-md-6 col-xs-12">
+  <div class="card">
+    <div class="card-header"><h4 class="card-title">Ledstrip Controller</h4></div>
+    <div class="card-body collapse in">
+      <div class="card-block">
+        <div class="row">
+
+          <div class="colorswatch" style="display: inline-block; margin-left: 10%" style.background-color="rgb({{red}}, {{green}}, {{blue}})"></div>
+
+          <div style="display: inline-block; width: 60%; padding-left: 15%">
+            <table>
+              <tr>
+                <td>R</td>
+                <td><input [(ngModel)]="red" class="form-control" id="range" value="{{red}}" type="range" min="0" max="255" (change)="change()" [disabled]="!selectColor"/></td>
+              </tr>
+              <br>
+              <tr>
+                <td>G</td>
+                <td><input [(ngModel)]="green" class="form-control" id="range" value="{{green}}" type="range" min="0" max="255" (change)="change()" [disabled]="!selectColor"/></td>
+              </tr>
+              <br>
+              <tr>
+                <td>B</td>
+                <td><input [(ngModel)]="blue" class="form-control" id="range" value="{{blue}}" type="range" min="0" max="255" (change)="change()" [disabled]="!selectColor"/></td>
+              </tr>
+            </table>
+          </div>
+
+          <br>
+          <br>
+
+          <div class="table-responsive">
+            <table class="table">
+              <tr>
+                <td>Controller</td>
+                <td>Ledstrip</td>
+              </tr>
+              <tr>
+                <td>
+                  <select [(ngModel)]="selectedController" class="selectpicker">
+                    <option *ngFor="let controller of controllers" [ngValue]="controller" (click)="selectController()">{{controller.name}}</option>
+                  </select>
+                </td>
+                <td>
+                  <select [(ngModel)]="selectedLedstrip" class="selectBox">
+                    <option *ngFor="let ledstrip of ledstrips" [ngValue]="ledstrip" (click)="selectLedstrip()">{{ledstrip.name}}</option>
+                  </select>
+                </td>
+              </tr>
+            </table>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
