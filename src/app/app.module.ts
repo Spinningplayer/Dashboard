@@ -27,11 +27,18 @@ import {ServerService} from './body-container/servers/server.service';
 import { StatsItemComponent } from './body-container/dashboard/server-statistics/stats-item/stats-item.component';
 import { MenuDirective } from './menu.directive';
 import { LedstripControllerComponent } from './body-container/dashboard/ledstrip-controller/ledstrip-controller.component';
+import { OutletsComponent } from './body-container/outlets/outlets.component';
+import { OutletListComponent } from './body-container/dashboard/outlet-list/outlet-list.component';
+import { OutletItemComponent } from './body-container/dashboard/outlet-list/outlet-item/outlet-item.component';
+import { ListComponent } from './body-container/outlets/list/list.component';
+import { FormComponent } from './body-container/outlets/form/form.component';
+import { ListItemComponent } from './body-container/outlets/list/list-item/list-item.component';
 
 const appRoutes: Routes = [
   {path: 'servers', component: ServersComponent},
   {path: 'dashboard', component: DashboardComponent},
   {path: 'ledstrips', component: LedstripsComponent},
+  {path: 'outlets', component: OutletsComponent},
   {path: '', component: DashboardComponent}
 ]
 
@@ -56,7 +63,13 @@ const appRoutes: Routes = [
     ServerStatisticsComponent,
     StatsItemComponent,
     MenuDirective,
-    LedstripControllerComponent
+    LedstripControllerComponent,
+    OutletsComponent,
+    OutletListComponent,
+    OutletItemComponent,
+    ListComponent,
+    FormComponent,
+    ListItemComponent
   ],
   imports: [
     BrowserModule,

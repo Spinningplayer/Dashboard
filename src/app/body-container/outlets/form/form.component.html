@@ -1,0 +1,31 @@
+<div class="col-xl-6 col-md-6 col-xs-12">
+  <div class="card">
+    <div class="card-header"><h4 class="card-title">Edit Outlet</h4></div>
+    <div class="card-body collapse in">
+      <div class="card-block">
+        <form [formGroup]="outletForm" (ngSubmit)="save()">
+          <div class="row">
+            <div class="col-xs-12">
+              <label for="name">Name</label>
+              <input type="text" id="name" formControlName="name" class="form-control">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12">
+              <label for="number">number</label>
+              <input type="text" id="number" formControlName="number" class="form-control">
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-xs-12">
+              <button *ngIf="editMode" class="btn btn-success" [disabled]="!outletForm.valid">Update</button>
+              <button *ngIf="!editMode" class="btn btn-success" [disabled]="!outletForm.valid">Create</button>
+              <button class="btn btn-danger" (click)="cancel()">Cancel</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
