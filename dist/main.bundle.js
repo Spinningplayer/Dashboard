@@ -2510,7 +2510,7 @@ ServersComponent = __decorate([
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return env; });
 var env = {
     production: false,
-    serverUrl: 'http://localhost:3000'
+    serverUrl: 'http://192.168.1.105:3000'
 };
 //# sourceMappingURL=env.js.map
 
