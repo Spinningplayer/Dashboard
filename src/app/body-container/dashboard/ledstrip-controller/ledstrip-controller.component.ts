@@ -40,12 +40,10 @@ export class LedstripControllerComponent implements OnInit {
     this.selectedLedstrip.color = color;
     this.ledStripService.updateLedstrip(this.selectedController._id, this.selectedLedstrip)
       .then(result => {
-        console.log(result);
       });
   }
 
   selectController() {
-    console.log(this.selectedController);
     this.ledstripController.setController(this.selectedController);
     this.ledStripService.getLedstrips(this.selectedController._id)
       .then(ledstrips => {

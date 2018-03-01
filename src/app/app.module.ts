@@ -33,6 +33,7 @@ import { OutletItemComponent } from './body-container/dashboard/outlet-list/outl
 import { ListComponent } from './body-container/outlets/list/list.component';
 import { FormComponent } from './body-container/outlets/form/form.component';
 import { ListItemComponent } from './body-container/outlets/list/list-item/list-item.component';
+import {OutletsService} from './services/outlets.service';
 
 const appRoutes: Routes = [
   {path: 'servers', component: ServersComponent},
@@ -81,7 +82,7 @@ const appRoutes: Routes = [
     CommonModule
   ],
   exports: [RouterModule],
-  providers: [ControllerService, ServerService],
+  providers: [ControllerService, ServerService, OutletsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

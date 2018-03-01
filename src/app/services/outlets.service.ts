@@ -46,6 +46,7 @@ export class OutletsService {
   }
 
   public addOutlet(outlet: Outlet): Promise<Outlet> {
+    outlet.state = false;
     return this.http.post(
       this.url,
       JSON.stringify(outlet),
@@ -98,7 +99,7 @@ export class OutletsService {
   }
 
   public switch(id: number, outlet: Outlet): Promise<any> {
-    return this.http.post(
+    return this.http.put(
       this.url + 'switch/' + id,
       JSON.stringify(outlet),
       {headers: this.headers})
@@ -108,7 +109,7 @@ export class OutletsService {
           this.outlets = outlets;
           this.outletsChanged.next(this.outlets.slice());
         });
-        return true;
+        return response;
       })
       .catch(err => {
         this.handleError(err);
