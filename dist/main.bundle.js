@@ -300,7 +300,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/body-container/dashboard/dashboard.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<app-ledstrip-controller></app-ledstrip-controller>\n<app-server-statistics></app-server-statistics>\n<app-outlet-list></app-outlet-list>\n\n"
+module.exports = "<div class=\"row\">\n  <app-ledstrip-controller></app-ledstrip-controller>\n  <app-outlet-list></app-outlet-list>\n</div>\n<div class=\"row\">\n  <app-server-statistics></app-server-statistics>\n</div>\n\n"
 
 /***/ }),
 
