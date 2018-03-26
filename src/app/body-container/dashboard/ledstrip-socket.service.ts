@@ -15,7 +15,10 @@ export class LedstripSocketService implements LedstripControllerService {
   setController(controller: Controller): boolean {
     console.log('selected controller: ' + controller.name);
     this.controller = controller;
-    this.socket = io('http://' + this.controller.address + ':8080');
+     // this.socket = io('http://' + this.controller.address + ':8080');
+
+    this.socket = new WebSocket('ws://' + this.controller.address + ':81');
+
     return this.socket.connected;
   }
 
@@ -32,7 +35,7 @@ export class LedstripSocketService implements LedstripControllerService {
       address: this.ledstrip.address,
       color: message
     };
-    if (this.socket.emit('color', msg)) {
+    if (this.socket.send(JSON.stringify(msg))) {
       return msg;
     } else {
       return null;
