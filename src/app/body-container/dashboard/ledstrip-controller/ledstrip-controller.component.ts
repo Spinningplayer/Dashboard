@@ -4,6 +4,7 @@ import {Ledstrip} from '../../../models/ledstrip.model';
 import {ControllerService} from '../../ledstrips/controller.service';
 import {LedstripService} from '../../ledstrips/ledstrip.service';
 import {Controller} from '../../../models/Controller.model';
+import {Color} from '../../../models/color.model';
 
 @Component({
   selector: 'app-ledstrip-controller',
@@ -35,7 +36,9 @@ export class LedstripControllerComponent implements OnInit {
   }
 
   change() {
-    const color = this.red + ':' + this.green + ':' + this.blue;
+
+    const color = new Color(this.red, this.green, this.blue);
+
     this.ledstripController.sendMessage(color);
     this.selectedLedstrip.color = color;
     this.ledStripService.updateLedstrip(this.selectedController._id, this.selectedLedstrip)
@@ -51,10 +54,9 @@ export class LedstripControllerComponent implements OnInit {
         this.selectedLedstrip = this.ledstrips[0];
         this.selectLedstrip();
         if (this.ledstrips[0].color != null) {
-          const numbers = this.ledstrips[0].color.match(/\d+/g).map(Number);
-          this.red = numbers[0];
-          this.green = numbers[1];
-          this.blue = numbers[2];
+          this.red = this.ledstrips[0].color.red;
+          this.green = this.ledstrips[0].color.green;
+          this.blue = this.ledstrips[0].color.blue;
         }
       })
       .catch(error => console.log(error));
