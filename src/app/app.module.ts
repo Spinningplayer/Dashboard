@@ -34,12 +34,20 @@ import { ListComponent } from './body-container/outlets/list/list.component';
 import { FormComponent } from './body-container/outlets/form/form.component';
 import { ListItemComponent } from './body-container/outlets/list/list-item/list-item.component';
 import {OutletsService} from './services/outlets.service';
+import { RoutinesComponent } from './body-container/routines/routines.component';
+import { RoutineListComponent } from './body-container/routines/routine-list/routine-list.component';
+import { RoutineEditComponent } from './body-container/routines/routine-edit/routine-edit.component';
+import { TaskListComponent } from './body-container/routines/routine-edit/task-list/task-list.component';
+import { TaskEditItemComponent } from './body-container/routines/routine-edit/task-list/task-edit-item/task-edit-item.component';
+import { RoutineEditFormComponent } from './body-container/routines/routine-edit/routine-edit-form/routine-edit-form.component';
+import { RoutineListItemComponent } from './body-container/routines/routine-list/routine-list-item/routine-list-item.component';
 
 const appRoutes: Routes = [
   {path: 'servers', component: ServersComponent},
   {path: 'dashboard', component: DashboardComponent},
   {path: 'ledstrips', component: LedstripsComponent},
   {path: 'outlets', component: OutletsComponent},
+  {path: 'routines', component: RoutinesComponent},
   {path: '', component: DashboardComponent}
 ]
 
@@ -70,7 +78,14 @@ const appRoutes: Routes = [
     OutletItemComponent,
     ListComponent,
     FormComponent,
-    ListItemComponent
+    ListItemComponent,
+    RoutinesComponent,
+    RoutineListComponent,
+    RoutineEditComponent,
+    TaskListComponent,
+    TaskEditItemComponent,
+    RoutineEditFormComponent,
+    RoutineListItemComponent
   ],
   imports: [
     BrowserModule,

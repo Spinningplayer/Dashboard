@@ -116,8 +116,5 @@ export class OutletsService {
       });
   }
 
-  private handleError(error: any): Promise<any> {
-    console.log('Outlets');
-    return Promise.reject(error.message || error);
-  }
+
 }
