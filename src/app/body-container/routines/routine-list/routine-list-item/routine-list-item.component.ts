@@ -1,4 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {Routine} from '../../../../models/routine.model';
+import {RoutinesService} from '../../../../services/routines.service';
 
 @Component({
   selector: '[app-routine-list-item]',
@@ -6,11 +8,27 @@ import {Component, Input, OnInit} from '@angular/core';
   styleUrls: ['./routine-list-item.component.css']
 })
 export class RoutineListItemComponent implements OnInit {
-  @Input() routine;
+  @Input() routine: Routine;
 
-  constructor() { }
+  constructor(private service: RoutinesService) { }
 
   ngOnInit() {
+  }
+
+  select() {
+    this.service.selectRoutine(this.routine);
+  }
+
+  delete() {
+    this.service.deleteRoutine(this.routine._id)
+      .then()
+      .catch(err => console.log(err));
+  }
+
+  execute() {
+    this.service.executeRoutine(this.routine._id)
+      .then()
+      .catch(err => console.log(err));
   }
 
 }

@@ -1,3 +1,11 @@
-<p>
-  routine-edit-form works!
-</p>
+<form [formGroup]="form" (ngSubmit)="save()">
+  <div class="row">
+    <div class="col-xs-12">
+      <label for="name">Name</label>
+      <input type="text" id="name" formControlName="name" class="form-control">
+      <br/>
+      <button *ngIf="editMode" class="btn btn-green" [disabled]="!form.valid">Update</button>
+      <button *ngIf="!editMode" class="btn btn-green" [disabled]="!form.valid">Create</button>
+    </div>
+  </div>
+</form>

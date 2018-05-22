@@ -1,3 +1,17 @@
-<p>
-  task-edit-item works!
-</p>
+<form [formGroup]="form" (ngSubmit)="save()">
+  <div class="row">
+    <div class="col-xs-3">
+      <input type="text" placeholder="Type" id="type" formControlName="type" class="form-control">
+    </div>
+    <div class="col-xs-3">
+      <input type="text" placeholder="Value" id="value" formControlName="value" class="form-control">
+    </div>
+    <div class="col-xs-3">
+      <input type="text" placeholder="Time" id="sleepTime" formControlName="sleepTime" class="form-control">
+    </div>
+    <div class="col-xs-3">
+      <button class="btn btn-green" [disabled]="!form.valid">Save</button>
+    </div>
+  </div>
+</form>
+

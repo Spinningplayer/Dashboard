@@ -41,6 +41,8 @@ import { TaskListComponent } from './body-container/routines/routine-edit/task-l
 import { TaskEditItemComponent } from './body-container/routines/routine-edit/task-list/task-edit-item/task-edit-item.component';
 import { RoutineEditFormComponent } from './body-container/routines/routine-edit/routine-edit-form/routine-edit-form.component';
 import { RoutineListItemComponent } from './body-container/routines/routine-list/routine-list-item/routine-list-item.component';
+import {RoutinesService} from './services/routines.service';
+import { TaskItemComponent } from './body-container/routines/routine-edit/task-list/task-item/task-item.component';
 
 const appRoutes: Routes = [
   {path: 'servers', component: ServersComponent},
@@ -85,7 +87,8 @@ const appRoutes: Routes = [
     TaskListComponent,
     TaskEditItemComponent,
     RoutineEditFormComponent,
-    RoutineListItemComponent
+    RoutineListItemComponent,
+    TaskItemComponent
   ],
   imports: [
     BrowserModule,
@@ -97,7 +100,7 @@ const appRoutes: Routes = [
     CommonModule
   ],
   exports: [RouterModule],
-  providers: [ControllerService, ServerService, OutletsService],
+  providers: [ControllerService, ServerService, OutletsService, RoutinesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

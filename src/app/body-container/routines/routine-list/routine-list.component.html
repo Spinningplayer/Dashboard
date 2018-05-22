@@ -14,7 +14,9 @@
             </thead>
             <tbody>
               <tr
-
+                *ngFor="let r of routines"
+                app-routine-list-item
+                [routine]="r"
               >
               </tr>
             </tbody>

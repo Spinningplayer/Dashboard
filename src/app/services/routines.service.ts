@@ -3,12 +3,12 @@ import {Http, Headers} from '@angular/http';
 import {env} from '../environments/env';
 import {Subject} from 'rxjs/Subject';
 import {Routine} from '../models/routine.model';
-import {Task} from "../models/task.model";
+import {Task} from '../models/task.model';
 
 @Injectable()
 export class RoutinesService {
   public routinesChanged = new Subject<Routine[]>();
-  public routinesSelected = new Subject<Routine>();
+  public routineSelected = new Subject<Routine>();
 
   private headers = new Headers({'content-type': 'application/json'});
   private rUrl = env.serverUrl + '/routines/';
@@ -17,6 +17,10 @@ export class RoutinesService {
   public routines: Routine[];
 
   constructor(private http: Http) { }
+
+  public selectRoutine(routine: Routine) {
+    this.routineSelected.next(routine);
+  }
 
   public getRoutines(): Promise<Routine[]> {
     return this.http.get(
@@ -52,9 +56,9 @@ export class RoutinesService {
       routine,
       {headers: this.headers})
       .toPromise()
-      .then(response => {
+      .then(() => {
         this.getRoutines()
-          .then(routines => {
+          .then(() => {
             return true;
           })
           .catch(err => {
@@ -66,14 +70,21 @@ export class RoutinesService {
       });
   }
 
-  public addTask(task: Task, id: number): Promise<boolean> {
+  public addTask(task: Task, id: string): Promise<boolean> {
+    console.log(task, id);
     return this.http.post(
       this.tUrl + id,
       task,
       {headers: this.headers})
       .toPromise()
-      .then(response => {
-        return true;
+      .then(() => {
+        this.getRoutines()
+          .then(() => {
+            return true;
+          })
+          .catch(err => {
+            return this.handleError(err);
+          });
       })
       .catch(err => {
         return this.handleError(err);
@@ -82,13 +93,13 @@ export class RoutinesService {
 
   public updateRoutine(routine: Routine): Promise<Routine> {
     return this.http.put(
-      this.tUrl + routine._id,
+      this.rUrl + routine._id,
       routine,
       {headers: this.headers})
       .toPromise()
-      .then(response => {
+      .then(() => {
         this.getRoutines()
-          .then(routines => {
+          .then(() => {
             return routine;
           })
           .catch(err => {
@@ -106,9 +117,9 @@ export class RoutinesService {
       task,
       {headers: this.headers})
       .toPromise()
-      .then(response => {
+      .then(() => {
         this.getRoutines()
-          .then(routines => {
+          .then(() => {
             return task;
           })
           .catch(err => {
@@ -120,14 +131,14 @@ export class RoutinesService {
       });
   }
 
-  public deleteRoutine(id: number): Promise<true> {
+  public deleteRoutine(id: string): Promise<true> {
     return this.http.delete(
       this.rUrl + id,
       {headers: this.headers})
       .toPromise()
-      .then(response => {
+      .then(() => {
         this.getRoutines()
-          .then(routines => {
+          .then(() => {
             return true;
           })
           .catch(err => {
@@ -139,14 +150,14 @@ export class RoutinesService {
       });
   }
 
-  public deleteTask(task: number, routine: number): Promise<true> {
+  public deleteTask(task: string, routine: string): Promise<true> {
     return this.http.delete(
-      this.rUrl + routine + '/' + task,
+      this.tUrl + routine + '/' + task,
       {headers: this.headers})
       .toPromise()
-      .then(response => {
+      .then(() => {
         this.getRoutines()
-          .then(routines => {
+          .then(() => {
             return true;
           })
           .catch(err => {
@@ -158,18 +169,19 @@ export class RoutinesService {
       });
   }
 
-  public executeRoutine(id: number): Promise<any> {
+  public executeRoutine(id: string): Promise<any> {
     return this.http.get(
       this.rUrl + 'execute/' + id,
       {headers: this.headers})
       .toPromise()
-      .then(response => {
+      .then(() => {
         return true;
       })
       .catch(err => {
         return this.handleError(err);
-      })
+      });
   }
+
   private handleError(error: any): Promise<any> {
     console.log('Routines');
     return Promise.reject(error.message || error);

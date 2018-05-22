@@ -112,9 +112,12 @@ export class OutletsService {
         return response;
       })
       .catch(err => {
-        this.handleError(err);
+        return this.handleError(err);
       });
   }
 
-
+  private handleError(error: any): Promise<any> {
+    console.log('Outlets');
+    return Promise.reject(error.message || error);
+  }
 }

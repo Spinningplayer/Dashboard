@@ -1,7 +1,7 @@
 export class Task {
   public _id: string;
   public type: string;
-  public command: string;
+  public value: string;
   public sleepTime: number;
 
   constructor(values: Object = {}) {

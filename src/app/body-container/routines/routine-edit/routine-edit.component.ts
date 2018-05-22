@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {RoutinesService} from '../../../services/routines.service';
+import {Routine} from '../../../models/routine.model';
 
 @Component({
   selector: 'app-routine-edit',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RoutineEditComponent implements OnInit {
 
-  constructor() { }
+  public routine: Routine;
+
+  constructor(private service: RoutinesService) { }
 
   ngOnInit() {
+    this.service.routineSelected.subscribe(routine => this.routine = routine);
   }
 
 }

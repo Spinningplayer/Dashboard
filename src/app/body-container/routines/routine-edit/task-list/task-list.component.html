@@ -1,3 +1,19 @@
-<p>
-  task-list works!
-</p>
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+      <td>Type</td>
+      <td>value</td>
+      <td>sleepTime</td>
+      <td></td>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="let t of routine.tasks"
+        app-task-item
+        [task]="t"
+        [id]="id"
+      ></tr>
+    </tbody>
+  </table>
+</div>
+<app-task-edit-item [id]="id"></app-task-edit-item>
