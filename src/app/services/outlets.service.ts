@@ -112,7 +112,7 @@ export class OutletsService {
         return response;
       })
       .catch(err => {
-        this.handleError(err);
+        return this.handleError(err);
       });
   }
 

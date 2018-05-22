@@ -1,10 +1,9 @@
-import {Color} from './color.model';
+import { Task } from './task.model';
 
-export class Ledstrip {
+export class Routine {
   public _id: string;
   public name: string;
-  public address: number;
-  public color: Color;
+  public tasks: [Task];
 
   constructor(values: Object = {}) {
     Object.assign(this, values);

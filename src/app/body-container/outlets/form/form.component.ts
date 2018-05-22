@@ -34,6 +34,7 @@ export class FormComponent implements OnInit {
     } else {
       this.service.addOutlet(this.outletForm.value);
     }
+    this.editMode = false;
     this.initForm();
   }
 
