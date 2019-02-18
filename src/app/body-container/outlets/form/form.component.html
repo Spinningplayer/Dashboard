@@ -12,8 +12,20 @@
           </div>
           <div class="row">
             <div class="col-xs-12">
-              <label for="number">number</label>
-              <input type="text" id="number" formControlName="number" class="form-control">
+              <label for="turnOn">Turn On Routine</label><br/>
+              <select id="turnOn" [(ngModel)]="outlet.turnOn" class="selectpicker">
+                <option>Select Routine</option>
+                <option *ngFor="let routine of routines" [ngValue]="routine">{{routine.name}}</option>
+              </select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12">
+              <label for="turnOff">Turn off Routine</label><br/>
+              <select id="turnOff" [(ngModel)]="outlet.turnOff" class="selectpicker">
+                <option>Select Routine</option>
+                <option *ngFor="let routine of routines" [ngValue]="routine">{{routine.name}}</option>
+              </select>
             </div>
           </div>
           <br>

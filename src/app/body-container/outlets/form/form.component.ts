@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Outlet} from '../../../models/outlet.model';
 import {OutletsService} from '../../../services/outlets.service';
+import {RoutinesService} from '../../../services/routines.service';
+import {Routine} from '../../../models/routine.model';
 
 @Component({
   selector: 'app-form',
@@ -11,9 +13,12 @@ import {OutletsService} from '../../../services/outlets.service';
 export class FormComponent implements OnInit {
   editMode = false;
   outletForm: FormGroup;
-  outlet: Outlet;
+  outlet: Outlet = new Outlet({});
+  routines: Routine[];
 
-  constructor(private service: OutletsService) { }
+
+  constructor(private service: OutletsService,
+              private routineService: RoutinesService) { }
 
   ngOnInit() {
     this.initForm();
@@ -23,9 +28,16 @@ export class FormComponent implements OnInit {
         this.editMode = true;
         this.initForm();
       });
+
+    this.routineService.getRoutines()
+      .then(routines => {
+        this.routines = routines;
+        this.initForm();
+      });
   }
 
   save() {
+    console.log('Saving');
     if (this.editMode) {
       this.service.updateOutlet(this.outlet._id, this.outletForm.value)
         .then(response => {
@@ -45,16 +57,20 @@ export class FormComponent implements OnInit {
 
   private initForm() {
     let outletName = '';
-    let outletNumber;
+    let outletTurnOn;
+    let outletTurnOff;
 
     if (this.editMode) {
+      console.log('Setting Values');
       outletName = this.outlet.name;
-      outletNumber = this.outlet.number;
+      outletTurnOn = this.outlet.turnOn;
+      outletTurnOff = this.outlet.turnOff;
     }
 
     this.outletForm = new FormGroup({
       'name': new FormControl(outletName, Validators.required),
-      'number': new FormControl(outletNumber, Validators.required)
+      'turnOn': new FormControl(outletTurnOn, Validators.required),
+      'turnOff': new FormControl(outletTurnOff, Validators.required)
     });
   }
 }
