@@ -45,11 +45,11 @@ import {RoutinesService} from './services/routines.service';
 import { TaskItemComponent } from './body-container/routines/routine-edit/task-list/task-item/task-item.component';
 
 const appRoutes: Routes = [
-  {path: 'servers', component: ServersComponent},
-  {path: 'dashboard', component: DashboardComponent},
-  {path: 'ledstrips', component: LedstripsComponent},
-  {path: 'outlets', component: OutletsComponent},
-  {path: 'routines', component: RoutinesComponent},
+  {path: 'Servers', component: ServersComponent},
+  {path: 'Dashboard', component: DashboardComponent},
+  {path: 'Ledstrips', component: LedstripsComponent},
+  {path: 'Switches', component: OutletsComponent},
+  {path: 'Routines', component: RoutinesComponent},
   {path: '', component: DashboardComponent}
 ]
 
