@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {OutletsService} from '../../../services/outlets.service';
-import {Outlet} from '../../../models/outlet.model';
+import { SwitchesService } from '../../../services/switches.service';
+import { Switch } from '../../../models/switch.model';
 
 @Component({
   selector: 'app-list',
@@ -8,17 +8,20 @@ import {Outlet} from '../../../models/outlet.model';
   styleUrls: ['./list.component.css']
 })
 export class ListComponent implements OnInit {
-  outlets: Outlet[];
+  switches: Switch[];
 
-  constructor(private service: OutletsService) { }
+  constructor(private service: SwitchesService) { }
 
   ngOnInit() {
-    this.service.getOutlets()
-      .then(outlets => this.outlets = outlets)
+    this.service.getSwitches()
+      .then(switches => {
+        this.switches = switches
+        console.log(switches);
+      })
       .catch(err => console.log(err));
 
-    this.service.outletsChanged.subscribe(outlets => {
-      this.outlets = outlets;
+    this.service.switchesChanged.subscribe(switches => {
+      this.switches = switches;
     });
   }
 }

@@ -1,9 +1,9 @@
 <div class="col-xl-6 col-md-6 col-xs-12">
   <div class="card">
-    <div class="card-header"><h4 class="card-title">Edit Outlet</h4></div>
+    <div class="card-header"><h4 class="card-title">Edit Switch</h4></div>
     <div class="card-body collapse in">
       <div class="card-block">
-        <form [formGroup]="outletForm" (ngSubmit)="save()">
+        <form [formGroup]="switchForm" (ngSubmit)="save()">
           <div class="row">
             <div class="col-xs-12">
               <label for="name">Name</label>
@@ -13,7 +13,7 @@
           <div class="row">
             <div class="col-xs-12">
               <label for="turnOn">Turn On Routine</label><br/>
-              <select id="turnOn" [(ngModel)]="outlet.turnOn" class="selectpicker">
+              <select id="turnOn" formControlName="onRoutine" class="selectpicker">
                 <option>Select Routine</option>
                 <option *ngFor="let routine of routines" [ngValue]="routine">{{routine.name}}</option>
               </select>
@@ -22,7 +22,7 @@
           <div class="row">
             <div class="col-xs-12">
               <label for="turnOff">Turn off Routine</label><br/>
-              <select id="turnOff" [(ngModel)]="outlet.turnOff" class="selectpicker">
+              <select id="turnOff" formControlName="offRoutine" class="selectpicker">
                 <option>Select Routine</option>
                 <option *ngFor="let routine of routines" [ngValue]="routine">{{routine.name}}</option>
               </select>
@@ -31,8 +31,9 @@
           <br>
           <div class="row">
             <div class="col-xs-12">
-              <button *ngIf="editMode" class="btn btn-success" [disabled]="!outletForm.valid">Update</button>
-              <button *ngIf="!editMode" class="btn btn-success" [disabled]="!outletForm.valid">Create</button>
+              <button *ngIf="editMode" class="btn btn-success" [disabled]="!switchForm.valid">Update</button>
+              <button *ngIf="!editMode" class="btn btn-success" >Create</button>
+              <!-- [disabled]="!switchForm.valid" -->
               <button class="btn btn-danger" (click)="cancel()">Cancel</button>
             </div>
           </div>

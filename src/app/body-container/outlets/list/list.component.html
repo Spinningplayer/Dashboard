@@ -10,13 +10,14 @@
               <td>name</td>
               <td>On Routine</td>
               <td>Off Routine</td>
+              <td></td>
             </tr>
             </thead>
             <tbody>
             <tr
-              *ngFor="let outlet of outlets"
+              *ngFor="let switch of switches"
               app-list-item
-              [outlet]="outlet"
+              [switch]="switch"
             ></tr>
             </tbody>
           </table>

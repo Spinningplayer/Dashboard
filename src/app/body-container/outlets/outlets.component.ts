@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {OutletsService} from '../../services/outlets.service';
+import { SwitchesService } from '../../services/switches.service';
 
 @Component({
   selector: 'app-outlets',
   templateUrl: './outlets.component.html',
   styleUrls: ['./outlets.component.css'],
-  providers: [OutletsService]
+  providers: [SwitchesService]
 })
 export class OutletsComponent implements OnInit {
 

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {Outlet} from '../../../models/outlet.model';
-import {OutletsService} from '../../../services/outlets.service';
+import { SwitchesService } from '../../../services/switches.service';
 import {RoutinesService} from '../../../services/routines.service';
 import {Routine} from '../../../models/routine.model';
+import { Switch } from '../../../models/switch.model';
 
 @Component({
   selector: 'app-form',
@@ -12,19 +12,19 @@ import {Routine} from '../../../models/routine.model';
 })
 export class FormComponent implements OnInit {
   editMode = false;
-  outletForm: FormGroup;
-  outlet: Outlet = new Outlet({});
+  switchForm: FormGroup;
+  switch: Switch = new Switch();
   routines: Routine[];
 
 
-  constructor(private service: OutletsService,
+  constructor(private service: SwitchesService,
               private routineService: RoutinesService) { }
 
   ngOnInit() {
     this.initForm();
-    this.service.outletSelected
-      .subscribe(outlet => {
-        this.outlet = outlet;
+    this.service.switchSelected
+      .subscribe(switchO => {
+        this.switch = switchO;
         this.editMode = true;
         this.initForm();
       });
@@ -39,12 +39,12 @@ export class FormComponent implements OnInit {
   save() {
     console.log('Saving');
     if (this.editMode) {
-      this.service.updateOutlet(this.outlet._id, this.outletForm.value)
+      this.service.updateSwitch(this.switch._id, this.switchForm.value)
         .then(response => {
           this.editMode = false;
         });
     } else {
-      this.service.addOutlet(this.outletForm.value);
+      this.service.addSwitch(this.switchForm.value);
     }
     this.editMode = false;
     this.initForm();
@@ -56,21 +56,21 @@ export class FormComponent implements OnInit {
   }
 
   private initForm() {
-    let outletName = '';
-    let outletTurnOn;
-    let outletTurnOff;
+    let switchName = '';
+    let onRoutine;
+    let offRoutine;
 
     if (this.editMode) {
       console.log('Setting Values');
-      outletName = this.outlet.name;
-      outletTurnOn = this.outlet.turnOn;
-      outletTurnOff = this.outlet.turnOff;
+      switchName = this.switch.name;
+      onRoutine = this.switch.onRoutine;
+      offRoutine = this.switch.offRoutine;
     }
 
-    this.outletForm = new FormGroup({
-      'name': new FormControl(outletName, Validators.required),
-      'turnOn': new FormControl(outletTurnOn, Validators.required),
-      'turnOff': new FormControl(outletTurnOff, Validators.required)
+    this.switchForm = new FormGroup({
+      'name': new FormControl(switchName, Validators.required),
+      'onRoutine': new FormControl(onRoutine, Validators.required),
+      'offRoutine': new FormControl(offRoutine, Validators.required)
     });
   }
 }

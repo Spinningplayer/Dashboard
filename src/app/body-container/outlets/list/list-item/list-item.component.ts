@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Outlet} from '../../../../models/outlet.model';
 import {OutletsService} from '../../../../services/outlets.service';
+import { Switch } from '../../../../models/switch.model';
+import { SwitchesService } from '../../../../services/switches.service';
 
 @Component({
   selector: '[app-list-item]',
@@ -8,19 +9,20 @@ import {OutletsService} from '../../../../services/outlets.service';
   styleUrls: ['./list-item.component.css']
 })
 export class ListItemComponent implements OnInit {
-  @Input() outlet: Outlet;
+  @Input() switch: Switch;
 
-  constructor(private service: OutletsService) { }
+  constructor(private service: SwitchesService) { }
 
   ngOnInit() {
+    console.log(this.switch);
   }
 
   selectOutlet() {
-    this.service.selectOutlet(this.outlet);
+    this.service.selectSwitch(this.switch);
   }
 
   deleteOutlet() {
-    this.service.deleteOutlet(this.outlet._id)
+    this.service.deleteSwitch(this.switch._id)
       .then(response => {
         console.log(response);
       })
